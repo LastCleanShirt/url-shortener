@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /* 
- * [ ] TODO: Setup-ing this project
- * [ ] TODO: Make the basic backend
+ * [x] TODO: Setup-ing this project
  * [ ] TODO: Make the bootstrap css and html frontend
+ * [ ] TODO: Make the basic backend
  * [ ] TODO: Make the database and make the url shortener system
  * 
  * 
@@ -24,6 +24,7 @@ database.loadDatabase();
 
 // Variable
 const port = process.env.PORT || 3000;
+const server = process.env.SERVER || "localhost";
 
 // Use
 App.use(bodyParser.urlencoded({ extended: true }));
@@ -41,8 +42,13 @@ App.set("view engine", "ejs");
 App.get("/", function (req, res) {
 	database.find({}, function (err, docs) {
 		res.render("web/html/index", {
-			data_: docs
+			
 		});
 		// res.send({});
 	});
+});
+
+// Listening to port
+App.listen(port, server, function () {
+	console.log(`Listening at port ${server}:${port}`);
 });
