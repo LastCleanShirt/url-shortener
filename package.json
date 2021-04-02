@@ -4,5 +4,27 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "nedb": "^1.8.0"
-  }
+  },
+  "name": "url-shortener",
+  "description": "Url Shortener",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LastCleanShirt/url-shortener.git"
+  },
+  "keywords": [
+    "url",
+    "shortener"
+  ],
+  "author": "lastcleanshirtdev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LastCleanShirt/url-shortener/issues"
+  },
+  "homepage": "https://github.com/LastCleanShirt/url-shortener#readme"
 }
