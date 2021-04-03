@@ -2,9 +2,10 @@
 
 /* 
  * [x] TODO: Setup-ing this project
- * [ ] TODO: Make the bootstrap css and html frontend
- * [ ] TODO: Make the basic backend
- * [ ] TODO: Make the database and make the url shortener system
+ * [x] TODO: Make the bootstrap css and html frontend
+ * [x] TODO: Make the basic backend
+ * [x] TODO: Make the database and make the url shortener system
+ * [ ] TODO: Upgrade!
  * 
  * 
  * */
@@ -14,6 +15,7 @@ const express = require("express");
 const Datastore = require("nedb");
 const bodyParser = require("body-parser");
 const path = require("path");
+const id = require("./id.js");
 
 // App
 const App = express();
@@ -38,6 +40,11 @@ App.use(express.static(__dirname + "/public"));
 App.set("views", path.join(__dirname, "public"));
 App.set("view engine", "ejs");
 
+//database.insert({
+//	url: "https://localhost:3000",
+//	id: "dancedance"
+//})
+
 // Index
 App.get("/", function (req, res) {
 	database.find({}, function (err, docs) {
@@ -46,6 +53,34 @@ App.get("/", function (req, res) {
 		});
 		// res.send({});
 	});
+});
+
+// redirectId
+App.get("/:redirectId", function (req, res) {
+	const redirectId = req.params.redirectId;
+	database.findOne({id: redirectId}, function(err, url){
+		console.log(url);
+		res.redirect(url["url"]);
+	});
+});
+
+
+// Api
+App.post("/api/sendToBackend", function (req, res) {
+	const url = req.body.url;
+	const id_ = id(length=5);
+	database.insert({
+		url: url,
+		id: id_
+	});
+	res.render("web/html/yourIdIs", {
+		short: id_,
+		fullurl: url
+	});
+	// res.redirect("/" + id_);
+	//res.render("web/html/index", {
+	//	message: "<a href="+ url +">/"+ id +"</a>"
+	//});
 });
 
 // Listening to port

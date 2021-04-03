@@ -14,19 +14,7 @@
 </head>
 <body>
     <div class="mx-auto justify-content-center" style="width: 500px; top: 50%; margin: 10%;">
-        <form action="/api/sendToBackend" method="POST" id="form">
-            <div class="container">
-                <h1 style="text-align: center; font-family: 'Roboto', sans-serif;">Url Shortener</h1>
-            </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Url" id="basic-url url" aria-describedby="basic-addon3" name="url">
-                
-                <button class="btn btn-primary" id="send" style="text-align: center; font-family: 'Roboto', sans-serif;" type="submit" href="">Short!</button>
-            </div>
-            <div class="mx-auto justify-content-center" style="text-align: center; font-family: 'Roboto', sans-serif;">
-                <!-- <a class="btn btn-primary" id="send" style="text-align: center; font-family: 'Roboto', sans-serif;" onclick="document.querySelector('#form').submit();" type="submit" href="/" role="button">Short!</a> -->
-            </div>
-        </form>
+        <h1>Your id is <a href="<%= fullurl %>"><%= short %></a></h1>
     </div>
 </body>
 <!-- JQuery JS -->
